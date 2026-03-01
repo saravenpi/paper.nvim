@@ -21,8 +21,15 @@ function M.load()
   vim.o.termguicolors = true
   vim.g.colors_name = "paper"
 
+  local variant = M.config.variant
+  if vim.o.background == "dark" then
+    variant = "dark"
+  elseif vim.o.background == "light" then
+    variant = "light"
+  end
+
   local colors = require("paper.colors")
-  colors.set_variant(M.config.variant)
+  colors.set_variant(variant)
   local highlights = require("paper.highlights").setup(colors)
 
   for group, settings in pairs(highlights) do
