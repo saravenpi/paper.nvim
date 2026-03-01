@@ -66,6 +66,11 @@ The theme uses a warm, inviting color palette:
 
 <div align="center">
 
+### 🎨 Interactive Color Palettes
+
+**[→ View Light Mode Palette](https://coolors.co/faf6f0-4a3728-b04c3f-6a7d3e-c47f2c-4d6c7d-8b5a5a-507964)** | **[→ View Dark Mode Palette](https://coolors.co/2a1f1a-e8dcc8-c85a4c-7a9048-c47f2c-4d6c7d-a36969-507964)**
+
+
 | Color | Hex | Preview |
 |-------|-----|---------|
 | **Background** | `#faf6f0` | ![#faf6f0](https://img.shields.io/badge/Warm_Paper-faf6f0?style=for-the-badge&labelColor=4a3728) |
