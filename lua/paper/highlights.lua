@@ -214,6 +214,31 @@ function M.setup(colors)
     ["@tag.attribute"] = { fg = c.yellow },
     ["@tag.delimiter"] = { fg = c.gray_dark },
 
+    ["@markup.heading.1"] = { fg = c.red_bright, bold = true },
+    ["@markup.heading.2"] = { fg = c.red, bold = true },
+    ["@markup.heading.3"] = { fg = c.yellow_bright, bold = true },
+    ["@markup.heading.4"] = { fg = c.yellow, bold = true },
+    ["@markup.heading.5"] = { fg = c.blue_bright, bold = true },
+    ["@markup.heading.6"] = { fg = c.blue },
+
+    ["@markup.strong"] = { bold = true },
+    ["@markup.italic"] = { italic = true },
+    ["@markup.strikethrough"] = { strikethrough = true },
+    ["@markup.underline"] = { underline = true },
+
+    ["@markup.link"] = { fg = c.cyan, underline = true },
+    ["@markup.link.label"] = { fg = c.blue },
+    ["@markup.link.url"] = { fg = c.cyan_bright, underline = true },
+
+    ["@markup.raw"] = { fg = c.green, bg = c.cream },
+    ["@markup.raw.block"] = { fg = c.green, bg = c.cream },
+
+    ["@markup.list"] = { fg = c.magenta },
+    ["@markup.list.checked"] = { fg = c.green_bright },
+    ["@markup.list.unchecked"] = { fg = c.gray },
+
+    ["@markup.quote"] = { fg = c.gray_dark, italic = true },
+
     GitSignsAdd = { fg = editor.git_add },
     GitSignsChange = { fg = editor.git_change },
     GitSignsDelete = { fg = editor.git_delete },
