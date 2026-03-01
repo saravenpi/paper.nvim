@@ -4,12 +4,13 @@ A warm, café-inspired Neovim colorscheme with paper tones and rich mocha/coffee
 
 ## Features
 
-- Warm paper background with espresso brown text
-- Carefully crafted color palette inspired by café aesthetics
-- Full Tree-sitter support
-- LSP diagnostics support
-- Plugin integrations (Telescope, GitSigns, nvim-cmp, NeoTree, and more)
-- Customizable with transparency and styling options
+- 🌞 **Light mode** (default) - Warm paper background with espresso brown text
+- 🌙 **Dark mode** - Cozy dark roast with cream highlights
+- ☕ Carefully crafted color palette inspired by café aesthetics
+- 🌳 Full Tree-sitter support
+- 💡 LSP diagnostics support
+- 🔌 Plugin integrations (Telescope, GitSigns, nvim-cmp, NeoTree, and more)
+- 🎨 Customizable with transparency and styling options
 
 ## Installation
 
@@ -39,6 +40,7 @@ vim.cmd.colorscheme("paper")
 
 ```lua
 require("paper").setup({
+  variant = "light",
   transparent = false,
   italic_comments = true,
   italic_keywords = true,
@@ -47,6 +49,16 @@ require("paper").setup({
 
 vim.cmd.colorscheme("paper")
 ```
+
+#### Options
+
+- `variant` - Theme variant (default: `"light"`)
+  - `"light"` - Warm paper background with espresso text
+  - `"dark"` - Dark roast background with cream text
+- `transparent` - Enable transparent background (default: `false`)
+- `italic_comments` - Italicize comments (default: `true`)
+- `italic_keywords` - Italicize keywords (default: `true`)
+- `bold_functions` - Bold function names (default: `true`)
 
 ## Color Palette
 

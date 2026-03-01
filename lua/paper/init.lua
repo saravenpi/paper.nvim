@@ -5,6 +5,7 @@ M.config = {
   italic_comments = true,
   italic_keywords = true,
   bold_functions = true,
+  variant = "light",
 }
 
 function M.setup(opts)
@@ -21,6 +22,7 @@ function M.load()
   vim.g.colors_name = "paper"
 
   local colors = require("paper.colors")
+  colors.set_variant(M.config.variant)
   local highlights = require("paper.highlights").setup(colors)
 
   for group, settings in pairs(highlights) do
