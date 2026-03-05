@@ -51,6 +51,16 @@ function M.load()
 
     vim.api.nvim_set_hl(0, group, settings)
   end
+
+  vim.api.nvim_create_autocmd("OptionSet", {
+    pattern = "background",
+    group = vim.api.nvim_create_augroup("PaperThemeReload", { clear = true }),
+    callback = function()
+      if vim.g.colors_name == "paper" then
+        M.load()
+      end
+    end,
+  })
 end
 
 return M

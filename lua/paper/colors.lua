@@ -167,6 +167,4 @@ function colors.set_variant(variant)
   }
 end
 
-colors.set_variant("light")
-
 return colors
