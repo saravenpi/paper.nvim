@@ -68,19 +68,19 @@ function M.setup(colors)
     LineNrAbove = { fg = editor.line_nr },
     LineNrBelow = { fg = editor.line_nr },
 
-    Folded = { fg = c.gray_dark, bg = c.cream },
+    Folded = { fg = c.gray_dark, bg = editor.folded_bg },
     FoldColumn = { fg = c.gray, bg = editor.sign_column },
     SignColumn = { bg = editor.sign_column },
 
     Pmenu = { fg = editor.fg, bg = editor.pmenu_bg },
     PmenuSel = { fg = editor.fg, bg = editor.pmenu_sel, bold = true },
-    PmenuSbar = { bg = c.latte },
+    PmenuSbar = { bg = editor.pmenu_sbar },
     PmenuThumb = { bg = c.gray },
 
-    StatusLine = { fg = c.brown, bg = c.cream },
-    StatusLineNC = { fg = c.gray, bg = c.cream },
-    TabLine = { fg = c.gray, bg = c.cream },
-    TabLineFill = { bg = c.cream },
+    StatusLine = { fg = c.brown, bg = editor.statusline_bg },
+    StatusLineNC = { fg = c.gray, bg = editor.statusline_bg },
+    TabLine = { fg = c.gray, bg = editor.tabline_bg },
+    TabLineFill = { bg = editor.tabline_bg },
     TabLineSel = { fg = c.brown, bg = editor.bg, bold = true },
 
     VertSplit = { fg = editor.split },
@@ -230,8 +230,8 @@ function M.setup(colors)
     ["@markup.link.label"] = { fg = c.blue },
     ["@markup.link.url"] = { fg = c.cyan_bright, underline = true },
 
-    ["@markup.raw"] = { fg = c.green, bg = c.cream },
-    ["@markup.raw.block"] = { fg = c.green, bg = c.cream },
+    ["@markup.raw"] = { fg = c.green, bg = editor.code_block_bg },
+    ["@markup.raw.block"] = { fg = c.green, bg = editor.code_block_bg },
 
     ["@markup.list"] = { fg = c.magenta },
     ["@markup.list.checked"] = { fg = c.green_bright },
@@ -248,8 +248,15 @@ function M.setup(colors)
     TelescopeResultsBorder = { fg = c.latte },
     TelescopePreviewBorder = { fg = c.latte },
 
-    NeoTreeNormal = { bg = c.cream },
-    NeoTreeNormalNC = { bg = c.cream },
+    NeoTreeNormal = { bg = editor.panel_bg },
+    NeoTreeNormalNC = { bg = editor.panel_bg },
+    NeoTreeEndOfBuffer = { fg = editor.line_nr, bg = editor.panel_bg },
+    NeoTreeCursorLine = { bg = editor.cursor_line },
+
+    NvimTreeNormal = { bg = editor.panel_bg },
+    NvimTreeNormalNC = { bg = editor.panel_bg },
+    NvimTreeEndOfBuffer = { fg = editor.line_nr, bg = editor.panel_bg },
+    NvimTreeCursorLine = { bg = editor.cursor_line },
 
     LspReferenceText = { bg = editor.cursor_line },
     LspReferenceRead = { bg = editor.cursor_line },

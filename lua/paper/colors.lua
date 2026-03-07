@@ -105,11 +105,18 @@ function colors.set_variant(variant)
 
     pmenu_bg = variant == "dark" and "#332721" or "#f0ebe2",
     pmenu_sel = variant == "dark" and "#4d3a28" or "#e0d0bc",
+    pmenu_sbar = variant == "dark" and "#3d2d22" or "#cdb8a0",
 
     sign_column = colors.palette.bg,
     color_column = variant == "dark" and "#332721" or "#f4f0ea",
 
     split = variant == "dark" and colors.palette.selection_bg or colors.palette.latte,
+
+    panel_bg = variant == "dark" and "#332721" or "#e8dcc8",
+    statusline_bg = variant == "dark" and "#2d221c" or "#e8dcc8",
+    tabline_bg = variant == "dark" and "#2d221c" or "#e8dcc8",
+    folded_bg = variant == "dark" and "#332721" or "#e8dcc8",
+    code_block_bg = variant == "dark" and "#2d221c" or "#f4ede4",
 
     diff_add = variant == "dark" and "#2a3320" or "#e8f0dc",
     diff_delete = variant == "dark" and "#3d2320" or "#f5e0dd",
