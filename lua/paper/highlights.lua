@@ -214,12 +214,12 @@ function M.setup(colors)
     ["@tag.attribute"] = { fg = c.yellow },
     ["@tag.delimiter"] = { fg = c.gray_dark },
 
-    ["@markup.heading.1"] = { fg = c.red_bright, bold = true },
-    ["@markup.heading.2"] = { fg = c.red, bold = true },
-    ["@markup.heading.3"] = { fg = c.yellow_bright, bold = true },
-    ["@markup.heading.4"] = { fg = c.yellow, bold = true },
-    ["@markup.heading.5"] = { fg = c.blue_bright, bold = true },
-    ["@markup.heading.6"] = { fg = c.blue },
+    ["@markup.heading.1"] = { fg = c.red, bold = true },
+    ["@markup.heading.2"] = { fg = c.magenta, bold = true },
+    ["@markup.heading.3"] = { fg = c.yellow, bold = true },
+    ["@markup.heading.4"] = { fg = c.green, bold = true },
+    ["@markup.heading.5"] = { fg = c.blue, bold = true },
+    ["@markup.heading.6"] = { fg = c.cyan },
 
     ["@markup.strong"] = { bold = true },
     ["@markup.italic"] = { italic = true },
@@ -273,6 +273,86 @@ function M.setup(colors)
     CmpItemKindProperty = { fg = c.fg },
     CmpItemKindUnit = { fg = c.magenta },
   }
+
+  local function mix_hex(hex1, hex2, alpha)
+    local r1, g1, b1 = tonumber(hex1:sub(2, 3), 16), tonumber(hex1:sub(4, 5), 16), tonumber(hex1:sub(6, 7), 16)
+    local r2, g2, b2 = tonumber(hex2:sub(2, 3), 16), tonumber(hex2:sub(4, 5), 16), tonumber(hex2:sub(6, 7), 16)
+    return string.format("#%02x%02x%02x",
+      math.floor(r1 * (1 - alpha) + r2 * alpha),
+      math.floor(g1 * (1 - alpha) + g2 * alpha),
+      math.floor(b1 * (1 - alpha) + b2 * alpha))
+  end
+
+  local is_dark_bg = tonumber(editor.bg:sub(2, 3), 16) < 128
+  local mv_alpha = is_dark_bg and 0.25 or 0.15
+
+  local mv_palette = {
+    [0] = c.gray,
+    [1] = c.red,
+    [2] = c.magenta,
+    [3] = c.yellow,
+    [4] = c.green,
+    [5] = c.blue,
+    [6] = c.cyan,
+    [7] = c.magenta_bright,
+  }
+
+  for i = 0, 7 do
+    local fg_color = mv_palette[i]
+    local tinted_bg = mix_hex(editor.bg, fg_color, mv_alpha)
+    highlights["MarkviewPalette" .. i] = { bg = tinted_bg, fg = fg_color }
+    highlights["MarkviewPalette" .. i .. "Sign"] = { fg = fg_color }
+    highlights["MarkviewPalette" .. i .. "Fg"] = { fg = fg_color }
+    highlights["MarkviewPalette" .. i .. "Bg"] = { bg = tinted_bg }
+  end
+
+  highlights["MarkviewCode"] = { bg = editor.code_block_bg }
+  highlights["MarkviewInlineCode"] = { bg = editor.code_block_bg, fg = c.green }
+  highlights["MarkviewCodeInfo"] = { fg = c.gray, bg = editor.code_block_bg }
+  highlights["MarkviewCodeFg"] = { fg = editor.code_block_bg }
+
+  for h = 1, 6 do
+    highlights["MarkviewHeading" .. h] = { link = "MarkviewPalette" .. h }
+    highlights["MarkviewHeading" .. h .. "Sign"] = { link = "MarkviewPalette" .. h .. "Sign" }
+  end
+
+  for i = 0, 6 do
+    highlights["MarkviewIcon" .. i] = { fg = mv_palette[i], bg = editor.code_block_bg }
+  end
+
+  highlights["MarkviewBlockQuoteDefault"] = { fg = c.gray }
+  highlights["MarkviewBlockQuoteError"] = { fg = c.red_bright }
+  highlights["MarkviewBlockQuoteNote"] = { fg = c.blue_bright }
+  highlights["MarkviewBlockQuoteOk"] = { fg = c.green }
+  highlights["MarkviewBlockQuoteSpecial"] = { fg = c.yellow_bright }
+  highlights["MarkviewBlockQuoteWarn"] = { fg = c.yellow }
+
+  highlights["MarkviewCheckboxCancelled"] = { fg = c.gray }
+  highlights["MarkviewCheckboxChecked"] = { fg = c.green }
+  highlights["MarkviewCheckboxPending"] = { fg = c.yellow }
+  highlights["MarkviewCheckboxProgress"] = { fg = c.blue }
+  highlights["MarkviewCheckboxUnchecked"] = { fg = c.red_bright }
+  highlights["MarkviewCheckboxStriked"] = { fg = c.gray, strikethrough = true }
+
+  highlights["MarkviewListItemMinus"] = { fg = c.yellow }
+  highlights["MarkviewListItemPlus"] = { fg = c.green }
+  highlights["MarkviewListItemStar"] = { fg = c.blue }
+
+  highlights["MarkviewTableHeader"] = { fg = c.brown, bold = true }
+  highlights["MarkviewTableBorder"] = { fg = c.blue_bright }
+  highlights["MarkviewTableAlignLeft"] = { fg = c.brown, bold = true }
+  highlights["MarkviewTableAlignCenter"] = { fg = c.brown, bold = true }
+  highlights["MarkviewTableAlignRight"] = { fg = c.brown, bold = true }
+
+  highlights["MarkviewHyperlink"] = { fg = c.cyan, underline = true }
+  highlights["MarkviewImage"] = { fg = c.cyan, underline = true }
+  highlights["MarkviewEmail"] = { fg = c.cyan_bright, underline = true }
+  highlights["MarkviewSubscript"] = { fg = c.yellow_bright }
+  highlights["MarkviewSuperscript"] = { fg = c.blue }
+
+  for i = 0, 9 do
+    highlights["MarkviewGradient" .. i] = { fg = mix_hex(editor.bg, c.brown, i / 9) }
+  end
 
   return highlights
 end
